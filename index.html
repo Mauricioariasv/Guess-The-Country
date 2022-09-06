@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">  
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <title>Guess The Country</title>
+</head>
+<body class="game">
+
+  <div class="home animate__animated animate__fadeIn">
+
+    <button class="info__btn scale">?</button>
+
+    <div class="game__about">
+      <h1 class="game__title">Guess The Country</h1>
+      <p class="game__description">¡Select a game mode!</p>
+    </div>
+  
+    <div class="game__options">
+      <div class="game__modes">
+        <button class="scale" data-game-mode="name">
+          By Name
+        </button>
+        <button class="scale" data-game-mode="region">
+          By Region
+        </button>
+      </div>
+  
+      <div class="guess__quantity">
+        <label for="quantity">Countries to guess</label>
+        <input id="quantity" type="number" min="5" max="20" value="5">
+      </div>
+    </div>
+  
+    <div class="modal__info d-none">
+      <div class="bg__blur animate__animated animate__fadeIn"></div>
+      <div class="modal__content animate__animated animate__bounceInUp">
+        <h3>¿What's about?</h3>
+        <p>
+          The game is about to guess de country by name or region depending on 
+          the game mode.
+        </p>
+        <p>
+          To start playing you just need to select any of the game mode. 
+          You can also provide the quantity of countries to guess between 5 - 20.
+        </p>
+        <button class="close__modal__info__btn">X</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="game__started animate__animated animate__fadeIn d-none">
+    <p>Mode: <span class="game__mode"></span></p>
+
+    <div class="guess__container">
+      <p class="counter"></p>
+      <p class="guessed">Guessed: 0</p>
+  
+      <h3>Guess...</h3>
+
+      <div class="guess__info">
+        <img class="country__img" src="" alt="Country">
+
+        <div class="guess__options">
+          <!-- Options -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="game__finished animate__animated animate__fadeIn d-none">
+    <button class="new__game__btn scale">¡Start new game!</button>
+    <div class="game__info">
+      <h2>Game ended!</h2>
+      <p>Check your stats of the last 6 games.</p>
+
+      <div class="table__wrapper">
+        <table>
+          <tr>
+            <th>Game mode</th>
+            <th>Countries to guess</th>
+            <th>Successful</th>
+            <th>Percent</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
