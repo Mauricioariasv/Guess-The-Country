@@ -113,31 +113,37 @@ $light-gray: #dad7cd;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
 
-        label{
-          @include formatText($secondary-font, 1rem, $light-gray);
+        button, div{
+          padding: 5px 10px;
+          @include formatText($secondary-font, 1.3rem);
           font-weight: 600;
+          background: #fff;
+          border: 1px solid $light-gray
         }
-
-        input{
-          @include formatText($secondary-font, 1rem);
+        div{
+          min-width: 55px;
           text-align: center;
-          outline: 0;
-          border: 0;
-          padding: 7px;
-          border-radius: 5px;
+        }
+        button:first-child{
+          border-radius: 8px 0 0 8px;
+        }
+        button:last-child{
+          border-radius: 0 8px 8px 0;
         }
       }
     }
 
     .modal__info{
       position: fixed;
-      width: 100vw;
+      left: 0;
+      top: 0;
+      width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 10px;
     
         .bg__blur{
           position: absolute;
@@ -154,7 +160,6 @@ $light-gray: #dad7cd;
           border-radius: 10px;
           max-width: 500px;
           width: 100%;
-          margin: 10px;
           z-index: 1;
             
             h3{

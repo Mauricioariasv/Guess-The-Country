@@ -4,9 +4,9 @@ const infoModal = document.querySelector('.modal__info')
 const infoModalBlur = document.querySelector('.bg__blur')
 const closeInfoModalBtn = document.querySelector('.close__modal__info__btn')
 
-infoBtn.addEventListener('click', () => infoModalVisibility(true))
-closeInfoModalBtn.addEventListener('click', () => infoModalVisibility(false))
-infoModalBlur.addEventListener('click', () => infoModalVisibility(false))
+infoBtn.addEventListener('click', infoModalVisibility.bind(null, true))
+closeInfoModalBtn.addEventListener('click', infoModalVisibility.bind(null, false))
+infoModalBlur.addEventListener('click', infoModalVisibility.bind(null, false))
 
 function infoModalVisibility(visibility){
   visibility 
@@ -20,12 +20,13 @@ const gameStarted = document.querySelector('.game__started')
 const optionsWrapper = document.querySelector('.guess__options')
 const gameFinished = document.querySelector('.game__finished')
 const newGameBtn = document.querySelector('.new__game__btn')
+const containerSetCountriesToGuess = document.querySelector('.guess__quantity')
 
 let allCountries = null;
 
 const actualGame = {
   mode: '',
-  totalCountriesToGuess: 0,
+  totalCountriesToGuess: 5,
   countriesGuessed: 0,
   randomCountriesSelected: []
 }
@@ -37,6 +38,21 @@ const regions = [
   'Europe',
   'Oceania'
 ]
+
+containerSetCountriesToGuess.querySelectorAll('button').forEach( (b) => {
+  b.addEventListener('click', function(){
+    const action = b.getAttribute('data-action');
+
+    if(actualGame.totalCountriesToGuess === 5 && action === 'substract'
+      || actualGame.totalCountriesToGuess === 20 && action === 'add') return
+
+    (action === 'add')
+     ? actualGame.totalCountriesToGuess++
+     : actualGame.totalCountriesToGuess--
+
+     document.querySelector('.quantity').textContent = actualGame.totalCountriesToGuess 
+  })
+})
 
 // Select a game mode
 const gameModeBtns = document.querySelector('.game__modes').querySelectorAll('button')
@@ -62,7 +78,6 @@ async function startGame(mode){
   actualGame.countriesGuessed = 0
 
   // Get random countries
-  actualGame.totalCountriesToGuess = Number(document.querySelector('#quantity').value)
   actualGame.randomCountriesSelected = await getRandomValues(actualGame.totalCountriesToGuess, allCountries)
 
   home.classList.add('d-none')
@@ -113,6 +128,9 @@ async function startGuessingCountry(countryIndex){
 }
 
 function finishGame(){
+
+  actualGame.totalCountriesToGuess = 5
+  document.querySelector('.quantity').textContent = '5'
 
   gameFinished.classList.remove('d-none')
   gameStarted.classList.add('d-none')
