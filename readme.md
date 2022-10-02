@@ -8,6 +8,10 @@ The game is very simple. It is a country guesser where you can find two modes:
 When an attempt is completed its information is displayed in a table where the last 6 attempts are listed. 
 These attempts are stored in the localStorage.
 
+## Live Game
+
+[Take me there](https://guess-country.netlify.app/)
+
 ## Motivation
 
 While studying Sass pre-processor I decided to make a simple game to practice the basics that I learned from it.
