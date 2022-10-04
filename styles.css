@@ -109,12 +109,22 @@ button {
 .home .game__options .guess__quantity div {
   min-width: 55px;
   text-align: center;
+  cursor: default;
+}
+.home .game__options .guess__quantity button {
+  transition: 200ms;
 }
 .home .game__options .guess__quantity button:first-child {
   border-radius: 8px 0 0 8px;
 }
 .home .game__options .guess__quantity button:last-child {
   border-radius: 0 8px 8px 0;
+}
+.home .game__options .guess__quantity button:hover {
+  background: #dfdfdf;
+}
+.home .game__options .guess__quantity button:active {
+  transform: scale(0.9);
 }
 .home .modal__info {
   position: fixed;

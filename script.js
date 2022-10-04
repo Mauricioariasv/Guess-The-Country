@@ -129,9 +129,6 @@ async function startGuessingCountry(countryIndex){
 
 function finishGame(){
 
-  actualGame.totalCountriesToGuess = 5
-  document.querySelector('.quantity').textContent = '5'
-
   gameFinished.classList.remove('d-none')
   gameStarted.classList.add('d-none')
 
@@ -172,6 +169,9 @@ function finishGame(){
   })
 
   localStorage.setItem('gamesPlayed', JSON.stringify(gamesPlayed))
+
+  actualGame.totalCountriesToGuess = 5
+  document.querySelector('.quantity').textContent = '5'
 }
 
 function guessResult(btnSelected, correctAnswer, guessingCountryIndex){

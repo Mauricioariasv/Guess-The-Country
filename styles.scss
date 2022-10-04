@@ -124,12 +124,22 @@ $light-gray: #dad7cd;
         div{
           min-width: 55px;
           text-align: center;
+          cursor: default;
         }
-        button:first-child{
-          border-radius: 8px 0 0 8px;
-        }
-        button:last-child{
-          border-radius: 0 8px 8px 0;
+        button{
+          transition: 200ms;
+          &:first-child{
+            border-radius: 8px 0 0 8px;
+          }
+          &:last-child{
+            border-radius: 0 8px 8px 0;
+          }
+          &:hover{
+            background: #dfdfdf;
+          }
+          &:active{
+            transform: scale(0.9);
+          }
         }
       }
     }
